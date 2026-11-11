@@ -1,48 +1,34 @@
-# 2026 운영보고대회 · 제11회 꿈드림 졸업식 모바일 초대장
+# 2026 운영보고대회 & 제11회 꿈드림 졸업식
 
-충주시청소년상담복지센터의 인쇄용 초대장을 바탕으로 제작한 모바일 웹 초대장입니다.
+충주시청소년상담복지센터 모바일 초대장입니다.
 
-- 일시: 2026년 11월 19일 목요일 14:00–15:20 (대한민국 표준시)
-- 장소: 충주시청소년문화의집 숨&뜰
-- 주소: 충북 충주시 금봉대로 544
-- 문의: 충주시학교밖청소년지원센터 043-856-7804
+게시 주소: https://chadchad99.github.io/chungju-invitation-2026/#top
 
-## 사용하기
+2026년 11월 19일 목요일 오후 2시, 충주시청소년문화의집 숨&뜰에서 진행합니다. 문의는 충주시학교밖청소년지원센터 043-856-7804입니다.
 
-별도 설치나 빌드가 필요 없습니다. `index.html`을 열면 미리 볼 수 있습니다.
-일정 저장, 전화 연결, 지도 검색, 주소 복사, 휴대폰 기본 공유 기능이 포함되어 있습니다.
-공유 기능은 게시된 웹 주소에서 작동합니다. 기본 공유를 지원하지 않는 기기에서는 링크를 복사합니다.
+## 구성과 동작
 
-## GitHub Pages에 게시하기
+- 승인된 에디토리얼 표지와 남색·아이보리·금색으로 통일한 초대글, 일시, 행사일정, 오시는 길
+- 한국 시간 기준으로 갱신되는 디데이. 행사 당일은 `D-DAY`, 이후에는 `행사 종료` 표시
+- 새 접속과 페이지 복원 시 표지부터 시작. 페이지 안의 메뉴 이동은 정상 동작
+- ‘초대장 보기’ 확대·페이드 전환과 스크롤에 따른 장면 전환. 동작 줄이기 설정 지원
+- 네이버 지도, 카카오맵, 주소 복사, 전화 연결, 캘린더 일정 저장, 기본 공유 또는 링크 복사
 
-1. GitHub에서 새 공개 저장소를 만듭니다. 예: `chungju-invitation-2026`.
-2. 이 폴더 **안의 파일 전체**를 저장소 최상위에 올립니다. `index.html`이 저장소 첫 화면에 보여야 합니다.
-3. 저장소의 **Settings → Pages**로 이동합니다.
-4. **Source: Deploy from a branch**, **Branch: main**, **Folder: /(root)**를 선택하고 **Save**를 누릅니다.
-5. 게시가 완료되면 Pages에 표시되는 주소를 공유합니다. 일반적인 주소 형식은 `https://계정명.github.io/chungju-invitation-2026/`입니다.
+## 파일
 
-공식 안내: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+- `index.html`: 원본 초대글과 행사 정보
+- `cover-editorial.webp`: 승인된 표지. 디데이 숫자를 제거하고 실시간 숫자를 별도로 표시
+- `cover-entry.js`: 최초 입장 시 표지 위치 처리
+- `invitation.js`: 디데이와 상호작용
+- `editorial-site.css`: 전체 디자인과 반응형 화면
+- `invitation.ics`: 오후 2시부터 3시 20분까지의 일정
+- `location-map.png`: 원본 초대장의 수정 약도
+- `share-editorial.png`: 공유 미리보기 이미지
 
-## 구성
+별도 빌드 없이 GitHub Pages의 `main` 브랜치 루트에서 게시합니다. 행사명·날짜·장소를 바꾸는 경우 표지 이미지, 본문, 일정 파일, 공유 이미지를 함께 수정해야 합니다.
 
-- `index.html`: 초대 문구, 행사 순서, 달력, 장소 및 주최·주관 정보
-- `style.css`: 휴대폰·PC 반응형 디자인
-- `script.js`: 공유, 주소 복사, 한국 시간 기준 D-day 표시
-- `invitation.ics`: 캘린더 일정 파일
-- `location-map.png`: 원본 초대장에서 추출한 수정 약도
-- `share-cover.png`: 공유 미리보기 이미지
-- `.nojekyll`: 정적 파일을 그대로 게시하는 GitHub Pages 설정
+## 제작 정보
 
-날짜·장소를 바꾸는 경우 HTML, 캘린더 파일, 공유 문구와 이미지를 함께 수정합니다.
-공유 미리보기 이미지의 절대 URL이 설정되어 있습니다.
+표지와 사진은 내장 이미지 생성 도구로 제작한 승인 시안을 사용했습니다. 표지 편집은 기존 배치를 보존하고 `D-8` 숫자만 제거하여 실제 날짜에 맞는 숫자를 표시할 수 있도록 했습니다.
 
-
-## 글꼴
-
-[Pretendard 1.3.9](https://github.com/orioncactus/pretendard)을 사용했습니다. 글꼴 파일을 함께 제공하므로 기기마다 글꼴이 달라지지 않습니다. SIL Open Font License 1.1: `OFL.txt`.
-
-## 표지 삽화
-
-내장 이미지 생성 도구로 제작했습니다. 제작 지시: “남색 졸업식 초대장 표지에 사용할 금박 판화풍 학사모·술·리본으로 묶은 졸업장·월계수 삽화, 투명 배경, 글자 없음.” `graduation-emblem.webp`에 포함되어 있습니다.
-
-게시 주소: https://chadchad99.github.io/chungju-invitation-2026/
+본문 글꼴은 Noto Serif KR, 디데이 숫자는 Bodoni Moda입니다. 글꼴은 사이트에 포함되어 있으며 각각 `NotoSerifKR-OFL.txt`, `BodoniModa-OFL.txt`에 이용 조건이 있습니다.
