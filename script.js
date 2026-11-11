@@ -58,21 +58,26 @@
     const difference = Math.round((Date.UTC(2026, 10, 19) - today) / 86400000);
     const badge = document.getElementById('d-day');
     badge.classList.toggle('completed', difference < 0);
-    badge.textContent = difference > 0 ? `D-${difference}` : difference === 0 ? 'D-DAY' : '행사 종료';
+    const label = difference > 0 ? `D-${difference}` : difference === 0 ? 'D-DAY' : '행사 종료';
+    if (badge.textContent !== label) badge.textContent = label;
   }
   updateDayBadge();
   setInterval(updateDayBadge, 30000);
   window.addEventListener('pageshow', updateDayBadge);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) updateDayBadge(); });
-  if ('IntersectionObserver' in window) {
-    const links = [...document.querySelectorAll('.section-nav a')];
-    const observer = new IntersectionObserver(entries => {
-      const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio-a.intersectionRatio);
-      if (!visible.length) return;
-      const id = `#${visible[0].target.id}`;
-      links.forEach(link => link.getAttribute('href') === id ? link.setAttribute('aria-current','location') : link.removeAttribute('aria-current'));
-    }, {rootMargin:'-70px 0px -40% 0px',threshold:[0,.1,.3,.6]});
-    document.querySelectorAll('.paper-section').forEach(section => observer.observe(section));
+  const navigationLinks = Array.from(document.querySelectorAll('.section-nav a'));
+  const navigationSections = Array.from(document.querySelectorAll('.paper-section'));
+  function updateNavigation() {
+    const marker = Math.min(170, window.innerHeight * 0.28);
+    let active = '';
+    navigationSections.forEach(section => {
+      if (section.getBoundingClientRect().top <= marker) active = `#${section.id}`;
+    });
+    navigationLinks.forEach(link => {
+      if (link.getAttribute('href') === active) {
+        if (link.getAttribute('aria-current') !== 'location') link.setAttribute('aria-current', 'location');
+      } else if (link.hasAttribute('aria-current')) link.removeAttribute('aria-current');
+    });
   }
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if ('IntersectionObserver' in window && !reducedMotion) {
@@ -93,6 +98,7 @@
     const maximum = document.documentElement.scrollHeight - window.innerHeight;
     const progress = maximum > 0 ? Math.min(100, Math.max(0, window.scrollY / maximum * 100)) : 0;
     document.documentElement.style.setProperty('--reading-progress', `${progress}%`);
+    updateNavigation();
     progressPending = false;
   }
   window.addEventListener('scroll', () => {
