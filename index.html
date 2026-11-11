@@ -18,13 +18,27 @@
   <title>2026 운영보고대회 · 제11회 꿈드림 졸업식 초대장</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preload" href="EditorialLatin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="editorial-site.css?v=20261111a">
+  <link rel="stylesheet" href="editorial-site.css?v=20261111b">
   <script src="cover-entry.js?v=20261111a"></script>
   <script src="invitation.js?v=20261111a" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#invitation">초대글로 바로 가기</a>
   <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <filter id="logo-on-navy" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feComponentTransfer in="SourceGraphic" result="dark-type">
+          <feFuncR type="discrete" tableValues="1 1 1 1 1 1 0 0 0 0"/>
+          <feFuncG type="discrete" tableValues="1 1 1 1 1 1 0 0 0 0"/>
+          <feFuncB type="discrete" tableValues="1 1 1 1 1 1 0 0 0 0"/>
+        </feComponentTransfer>
+        <feColorMatrix in="dark-type" type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 1 1 0 -2" result="type-mask"/>
+        <feComposite in="type-mask" in2="SourceAlpha" operator="in" result="clipped-type"/>
+        <feFlood flood-color="#f7f1e5" result="light-type"/>
+        <feComposite in="light-type" in2="clipped-type" operator="in" result="legible-type"/>
+        <feComposite in="legible-type" in2="SourceGraphic" operator="over"/>
+      </filter>
+    </defs>
     <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 11h18m-9 3v4m-2-2h4"/></symbol>
     <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
     <symbol id="icon-phone" viewBox="0 0 24 24"><path d="m7 3 3 5-3 3c2 3 3 4 6 6l3-3 5 3c0 3-2 5-5 4C9 19 5 15 3 8 2 5 4 3 7 3Z"/></symbol>
@@ -93,7 +107,14 @@
         <li><time>14:12–14:25</time><div><h3>사업 운영보고 및 활동영상 상영</h3><p>청소년상담복지센터·학교밖청소년지원센터</p></div></li>
         <li><time>14:25–14:40</time><div><h3>표창 시상 및 장학금 수여</h3></div></li>
         <li><time>14:40–14:50</time><div><h3>내빈 축사</h3><p>내빈</p></div></li>
-        <li class="highlight"><time>14:50–15:00</time><div><h3>졸업장 및 수료증 수여</h3><p>졸업 20명, 수료 12명</p></div></li>
+        <li class="highlight">
+          <time>14:50–15:00</time>
+          <h3>졸업장 및 수료증 수여</h3>
+          <dl class="award-counts">
+            <div><dt>졸업</dt><dd><strong>20</strong><span>명</span></dd></div>
+            <div><dt>수료</dt><dd><strong>12</strong><span>명</span></dd></div>
+          </dl>
+        </li>
         <li><time>15:00–15:05</time><div><h3>송사 및 답사</h3><p>졸업생 및 재학생</p></div></li>
         <li><time>15:05–15:10</time><div><h3>부모님 인사말</h3></div></li>
         <li><time>15:10–15:15</time><div><h3>축하공연 <span>노래</span></h3><p>청소년</p></div></li>
@@ -112,10 +133,25 @@
       <div class="contact"><p class="contact-label">행사 문의</p><p>충주시학교밖청소년지원센터</p><a href="tel:0438567804"><svg><use href="#icon-phone"/></svg>043-856-7804</a></div>
     </section>
 
-    <footer class="footer">
-      <p class="footer-title">2026 운영보고대회<br>제11회 꿈드림 졸업식</p>
-      <div class="organizers"><div class="organizer-row"><span class="organizer-label">주최</span><div class="host-names"><span><img src="ministry-mark.png" alt="" width="26" height="26" loading="lazy">성평등가족부</span><span><img src="chungju-mark.png" alt="" width="26" height="26" loading="lazy">충주시</span></div></div><div class="organizer-row"><span class="organizer-label">주관</span><div class="organizer-names"><p><img class="youth-logo" src="youth1388.png" alt="청소년1388" width="90" height="30" loading="lazy"><span>충주시청소년상담복지센터</span></p><p><img class="dream-logo" src="dream.png" alt="꿈드림" width="80" height="29" loading="lazy"><span>충주시학교밖청소년지원센터</span></p></div></div></div>
-      <a class="back-top" href="#top">맨 위로 ↑</a>
+    <footer class="footer" aria-label="행사 주최 및 주관">
+      <p class="footer-title"><span>2026 운영보고대회</span><span>제11회 꿈드림 졸업식</span></p>
+      <div class="organizers">
+        <div class="organizer-row">
+          <span class="organizer-label">주최</span>
+          <div class="host-names">
+            <span><img src="ministry-mark.png" alt="" width="26" height="26" loading="lazy">성평등가족부</span>
+            <span><img src="chungju-mark.png" alt="" width="26" height="26" loading="lazy">충주시</span>
+          </div>
+        </div>
+        <div class="organizer-row">
+          <span class="organizer-label">주관</span>
+          <div class="organizer-names">
+            <p><span class="agency-mark"><img class="youth-logo" src="youth1388.png" alt="청소년1388" width="90" height="30" loading="lazy"></span><span>충주시청소년<br>상담복지센터</span></p>
+            <p><span class="agency-mark"><img class="dream-logo" src="dream.png" alt="꿈드림" width="80" height="29" loading="lazy"></span><span>충주시학교밖청소년<br>지원센터</span></p>
+          </div>
+        </div>
+      </div>
+      <a class="back-top" href="#top">맨 위로 <span aria-hidden="true">↑</span></a>
     </footer>
   </main>
 
